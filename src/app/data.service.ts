@@ -1,9 +1,13 @@
-import { Service } from '@angular/core';
-import { ref, push, onValue } from 'firebase/database';
+
+import { Injectable } from '@angular/core';
+import { ref, push, onValue, remove, get, update } from 'firebase/database';
 import { database } from './firebase.service';
 
-@Service()
+@Injectable({
+  providedIn: 'root'
+})
 export class DataService {
+
   // Save a new point
   savePoint(point: { name: string, coordinates: string, description: string }) {
     const pointsRef = ref(database, 'points');
@@ -20,5 +24,34 @@ export class DataService {
         reject(error);
       });
     });
+  }
+
+  deletePoint(key: string) {
+    const pointRef = ref(database, `points/${key}`);
+    return remove(pointRef);
+  }
+
+  getPoint(key: string) {
+    const pointRef = ref(database, `points/${key}`);
+    return new Promise((resolve, reject) => {
+      get(pointRef).then((snapshot) => {
+        const data = snapshot.val();
+        resolve(data);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  }
+
+  updatePoint(
+    key: string,
+    point: {
+      name: string;
+      coordinates: string;
+      description: string;
+    }
+  ) {
+    const pointRef = ref(database, `points/${key}`);
+    return update(pointRef, point);
   }
 }

@@ -1,15 +1,12 @@
+
 /*
  * App Global CSS
  * ----------------------------------------------------------------------------
  * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * the entire app and not just one component.
  */
 
-// leaflet css
+/* Leaflet CSS */
 @import "leaflet/dist/leaflet.css";
 
 /* Core CSS required for Ionic components to work properly */
@@ -21,20 +18,63 @@
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
 
-/* Optional CSS utils that can be commented out */
+/* Optional CSS utils */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
+/*
  * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
+ * ----------------------------------------------------------------------------
  */
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+/* ==================================================
+   Popup Marker Leaflet: Tombol Edit dan Delete
+   ================================================== */
+
+.point-popup {
+  min-width: 120px;
+}
+
+.popup-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.popup-actions button {
+  width: 36px;
+  height: 34px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: opacity 0.2s ease;
+}
+
+/* Tombol Edit - Pink */
+.popup-actions .edit-link {
+  background-color: #fce7f3;
+  color: #db2777;
+}
+
+/* Tombol Delete - Merah */
+.popup-actions .delete-link {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Efek ketika tombol disentuh */
+.popup-actions button:hover {
+  opacity: 0.75;
+}
